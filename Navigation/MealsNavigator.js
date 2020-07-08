@@ -26,14 +26,9 @@ const defaultStackNavOptions = {
 
 const FiltersNavigator = createStackNavigator(
   {
-    Filters: FiltersScreen,
+    Filters: {screen: FiltersScreen},
   },
-  {
-    navigationOptions: {
-      drawerLabel: "Filters!!"
-    },
-    defaultStackNavOptions
-  }
+  defaultStackNavOptions
 );
 
 const MealsNavigator = createStackNavigator(

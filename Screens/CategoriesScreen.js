@@ -13,6 +13,8 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { CATEGORIES } from "../data/dummy-data";
 import Colors from "../Constants/Color";
 import CategoryGridTile from "../Components/CategoryGridTile";
+import { FontAwesome } from "@expo/vector-icons";
+import { ScrollView } from "react-native-gesture-handler";
 
 const CategoriesScreen = (props) => {
   const renderGridItem = (itemData) => {
@@ -32,12 +34,21 @@ const CategoriesScreen = (props) => {
     );
   };
   return (
-    <FlatList
-      keyExtractor={(item, index) => item.id}
-      data={CATEGORIES}
-      renderItem={renderGridItem}
-      numColumns={2}
-    />
+    <View>
+      <View style={styles.flatList}>
+      <FlatList
+        keyExtractor={(item, index) => item.id}
+        data={CATEGORIES}
+        renderItem={renderGridItem}
+        numColumns={2}
+      />
+      </View>
+      <View style={styles.footer}>
+        <Text>Made with </Text>
+        <FontAwesome name="heart" size={15} color="red" />
+      <Text> by Jerry </Text>
+      </View>
+    </View>
   );
 };
 
@@ -64,6 +75,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  footer:{
+    flexDirection: "row",
+    margin: 2,
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 5
+  },
+  flatList:{
+    height: "96%"
+  }
 });
 
 export default CategoriesScreen;
